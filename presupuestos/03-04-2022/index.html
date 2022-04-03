@@ -1,0 +1,144 @@
+
+
+<html>
+    <head>
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.9.2/css/reveal.css"/>
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.9.2/css/theme/league.css"/>
+       <style>
+          .reveal .slides p{
+          text-align: left;
+          }
+       </style>
+       <title>Presupuesto</title>
+    </head>
+    <body>
+       <div class="reveal">
+          <div class="slides">
+             <section data-transition="fade">
+                <p>Prespuesto para implementación de modelo Aquitectonico de Componentes y Modelo de Datos con capacidades de escalado multi-clientes.</p>
+             </section>
+             <section data-transition="fade">
+                <section data-transition="fade">
+                   <h3>🔖 ¿Cual es el Arquitectura mínima que soporta multiplés clientes en el sistema?</h3>
+                </section>
+                <section data-transition="fade" data-transition="zoom">
+                   <p> Se identificara los Actores y las interacciones entre ellos, los componentes del sistema, si sus restricciones</p>
+                   <p> Usando el modelo C4 donde se descubra cual es la mejor arquitectura según las intereacciones y   restricciones definidas previamente.</p>
+                   <p> Priorizando una estrategia de escalado multi-cliente.</p>
+                   <p><b>Estimado: </b>1hs</p>
+                </section>
+             </section>
+             <section data-transition="fade">
+                <section data-transition="fade">
+                   <h3>🔖 ¿Cual son la estrategias que se pueden evaluar para soporta multiplés clientes?</h3>
+                </section>
+                <section data-transition="fade" data-transition="zoom">
+                   <p>La estrategias a evaluar son:</p>
+                   <ul>
+                      <li>Orientadas a Modelo de Datos.</li>
+                      <li>Orientadas a Modelo de Acceso.</li>
+                   </ul>
+                   <p></p>
+                </section>
+             </section>
+             <section data-transition="fade">
+                <section data-transition="fade">
+                   <h3>🔖 ¿Cual son las estrategias orientadas a datos que se adecuan a esa Arquitectura mínima que soporta multiplés cliente?</h3>
+                </section>
+                <section data-transition="fade" data-transition="zoom">
+                   <p>Se evaluara:</p>
+                   <ul>
+                      <li>
+                         Multitenant: 
+                         <ul>
+                            <li>Una <strong>gran</strong> persistencia</li>
+                            <li>Muchos clientes.</li>
+                         </ul>
+                      </li>
+                      <li>
+                         Arquitectura Monolitica con componentes desacoplados 
+                         <ul>
+                            <li>Muchas persistencia medias</li>
+                            <li>Muchos user-access de ddbb.</li>
+                         </ul>
+                      </li>
+                      <li>Esquema híbrido.</li>
+                   </ul>
+                   <p><b>Estimado: </b>1hs</p>
+                </section>
+             </section>
+             <section data-transition="fade">
+                <section data-transition="fade">
+                   <h3>🔖 ¿Cual son las estrategias orientadas a Acceso que se adecuan a esa Arquitectura mínima que soporta multiplés cliente?</h3>
+                </section>
+                <section data-transition="fade" data-transition="zoom">
+                   <p>Se evaluara:</p>
+                   <ul>
+                      <li>
+                         Owner sobre los datos: 
+                         <ul>
+                            <li>Una <strong>gran</strong> persistencia</li>
+                            <li>Gestión de permisos el acceso sobre datos.</li>
+                         </ul>
+                      </li>
+                      <li>
+                         Arquitectura de API microservicios 
+                         <ul>
+                            <li>Muchas Persistencia pequeñas</li>
+                            <li>Muchos clientes.</li>
+                         </ul>
+                      </li>
+                      <li>
+                         Persistencia Multi-Instancia: 
+                         <ul>
+                            <li>Muchas persistencia medias</li>
+                            <li>Muchos user-access de ddbb.</li>
+                         </ul>
+                      </li>
+                      <li>Esquema híbrido.</li>
+                   </ul>
+                   <p><b>Estimado: </b>1hs</p>
+                </section>
+             </section>
+             <section data-transition="fade">
+                <section data-transition="fade">
+                   <h3>🔖 ¿Cual es la mejor estrategia para gestionar cambios en el modelo de datos multi-cliente?</h3>
+                </section>
+                <section data-transition="fade" data-transition="zoom">
+                   <p>Se identificaran, según, los modelos anteriores, cual es la estrategia que más de adecua   para gestionar cambios en el modelo de datos (agregado de columna, cambios de tipo, etc).</p>
+                   <p><b>Estimado: </b>1hs</p>
+                </section>
+             </section>
+             <section data-transition="fade">
+                <section data-transition="fade">
+                   <h3>👷 Matriz de Stack Técnologico según cada Arquitectura</h3>
+                </section>
+                <section data-transition="fade" data-transition="zoom">
+                   <p>En base a las arquitecturas propuestas, se indicara para cada caso un stack de tecnologias a usar,   con sus respectivos riesgos y beneficios.</p>
+                   <p><b>Estimado: </b>1hs</p>
+                </section>
+             </section>
+             <section data-transition="fade">
+                <section data-transition="fade">
+                   <h3>👷 POC sobre modelo de datos de pruebas para evaluar sus consistencia y efectividad</h3>
+                </section>
+                <section data-transition="fade" data-transition="zoom">
+                   <p>En base a las arquitecturas propuestas, se hara una prueba de concepto con un modelo de datos minimo   donde se evaluara las ventajas y riesgo de dicha estrategia.</p>
+                   <p><b>Estimado: </b>2hs</p>
+                </section>
+             </section>
+             <section data-transition="fade">
+                <h2>Tiempo Estimado de ejecución 7 horas</h2>
+                <h2>Costo $ 14000 Pesos </h2>
+             </section>
+          </div>
+       </div>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.9.2/js/reveal.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.9.2/plugin/markdown/marked.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.9.2/plugin/markdown/markdown.js"></script><script>Reveal.initialize({
+          markdown: {smartypants: true},
+          slideNumber: true 
+          });
+       </script>
+    </body>
+ </html>
+ 
+ 
