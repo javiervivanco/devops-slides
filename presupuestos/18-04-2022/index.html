@@ -1,0 +1,517 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.9.2/css/reveal.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.9.2/css/theme/white.css"/>
+<style>
+.reveal .slides p{
+    text-align: left;    
+}
+h1,h2,h3,h4 {
+    text-transform: none !important;
+}
+</style>
+<title>Presupuesto</title>
+</head>
+<body>
+    <div class="reveal">
+    <div class="slides">
+    <section data-transition="fade">
+    <section data-transition="fade">
+    <h3>  Presupuesto para la implementación de DevOps</h3>
+<p>
+
+</p>
+</section>
+<section data-transition="fade" data-transition="zoom">
+    <p>Se indican cada una de las tareas necesaria para implementar un flujo de trabajo orientado a las buenas practicas de DevOps</p>
+</section>
+</section>
+<section data-transition="fade">
+    <h3>🏗️ 🏢 Analisis de arquitectura</h3>
+</section>
+<section data-transition="fade">
+    <section data-transition="fade">
+    <h3>📖 ¿Como esta diseñado el sistema?</h3>
+<p> Tiempo estimado de <b>Analisis</b>: 4hs</p>
+</section>
+<section data-transition="fade" data-transition="zoom">
+    <p>Analizo las parte del sistema y sus interacciones:</p>
+<ul>
+<li>¿Que modulos tiene internamente?</li>
+<li>¿Como esta implementada la persistencia de datos (DDBB, archivos locales y externos)?</li>
+<li>¿Sobre que framework esta desarrollado?</li>
+<li>¿Cuantos lenguajes utiliza?</li>
+<li>¿Como maneja maneja los logs el sistema?</li>
+<li>¿Como maneja configuraciones sobre servicios externos (Mail, DDBB, notificaciones)?</li>
+</ul>
+</section>
+</section>
+<section data-transition="fade">
+    <section data-transition="fade">
+    <h3>📖 ¿Tiene implementado un flujo de trabajo git-flow?</h3>
+<p> Tiempo estimado de <b>Analisis</b>: 2hs</p>
+</section>
+<section data-transition="fade" data-transition="zoom">
+    <p>Un flujo de trabajo correcto en <strong title="Sistema de control de versiones en  Repositorio  ">git</strong> permite ordenar las versiones y el flujo de trabajo diario.</p>
+<p> Permitiendo implementar, sin mayores riesgo, <strong>triggers</strong> o <strong title="Disparos automatizados por eventos via WEB">WebHooks</strong>   para vez que se realiza un cambio de estado en el <strong title="Espacio donde se almacenan contenidos que dispone de políticas gestión">Repositorio</strong> .</p>
+<p> Es el paso previo a la implementación de un <strong title="Flujo de tareas encadenadas con una fin especifico">Pipeline</strong>
+</p>
+</section>
+</section>
+<section data-transition="fade">
+    <section data-transition="fade">
+    <h3>📖 ¿Es escalable horizontalmente?</h3>
+<p> Tiempo estimado de <b>Analisis</b>: 2hs</p>
+</section>
+<section data-transition="fade" data-transition="zoom">
+    <p>Debo analizar cual es el framework con el que esta diseñado.</p>
+<p> De que manera esta implementado docker</p>
+<p> Como esta prevista el base de datos, la migración de datos.</p>
+<p> Como manaja varias instancias en paralelo.</p>
+<ul>
+    <li>¿Existe bloqueo en los logs?</li>
+<li>¿Existe bloqueo en la persistencia?</li>
+<li>¿Existe bloqueo en las configuraciones?</li>
+</ul>
+</section>
+</section>
+<section data-transition="fade">
+    <section data-transition="fade">
+    <h3>📖 ¿El sistema corre pruebas automatizadas que garantizen la calidad del codigo?</h3>
+<p> Tiempo estimado de <b>Analisis</b>: 1hs</p>
+</section>
+<section data-transition="fade" data-transition="zoom">
+    <p>Verificamos como se pueden o estan automatizadas las pruebas y de que manera sumarlas a un flujo de <strong>Integración continua</strong> CD/CI</p>
+</section>
+</section>
+<section data-transition="fade">
+    <section data-transition="fade">
+    <h3>📖 ¿Puede ser desplegada en la nube sin mayores modificaciones?</h3>
+<p> Tiempo estimado de <b>Analisis</b>: 2hs</p>
+</section>
+<section data-transition="fade" data-transition="zoom">
+    <p>Analizo cuan apto a la nube es el sistema actual y si hace falta o no cambios.</p>
+</section>
+</section>
+<section data-transition="fade">
+    <h3>🎟️ Entregables</h3>
+</section>
+<section data-transition="fade">
+    <section data-transition="fade">
+    <h3>🏗️ Diagrama de arquitectura</h3>
+<p> Tiempo estimado de <b>Construcción</b>: 4hs</p>
+</section>
+<section data-transition="fade" data-transition="zoom">
+    <p>Con toda la información recopilada puedo armar una Arquitectura como código en <strong>PlantUML</strong>.</p>
+<p> Usando la metodologia <strong>C4-Model</strong> es posible tener diferentes capas de analisis de la arquitectura.   Eso facilitara la comprensión del sistema para todos los actores.   Incluyendo los nuevos que se sumen al proceso de desarrollo.</p>
+</section>
+</section>
+<section data-transition="fade">
+    <section data-transition="fade">
+    <h3>🏗️ Script para un flujo de trabajo git-flow</h3>
+<p> Tiempo estimado de <b>Construcción</b>: 2hs</p>
+</section>
+<section data-transition="fade" data-transition="zoom">
+    <p>Para controlar la correcta implementación del git-flow.   Incluyendo git-hook cuando sean necesarios.</p>
+</section>
+</section>
+<section data-transition="fade">
+    <section data-transition="fade">
+    <h3>🛠️ Manejo de versionado semántico. SemVer</h3>
+<p> Tiempo estimado de <b>Implementación</b>: 2hs</p>
+</section>
+<section data-transition="fade" data-transition="zoom">
+    <p>Para controlar correctamente las versiones según su significa a nivel funcional.</p>
+<ul>
+    <li>Cambios mayores.</li>
+<li>Cambios menores.</li>
+<li>Parches de bugs.</li>
+</ul>
+</section>
+</section>
+<section data-transition="fade">
+    <section data-transition="fade">
+    <h3> Paridad de entorno</h3>
+<p>
+
+</p>
+</section>
+<section data-transition="fade" data-transition="zoom">
+    <p>Se mantiene DEV, STAGING y PROD tan parecidos como sea posible.</p>
+<p>Se reduce las diferencias en tiempos, los programadores pueden escribir código y tenerlo desplegado en horas, o incluso minutos. También podran escribir el código y estarán muy involucrados en el despliegue.  Observando su comportamiento en PROD.</p>
+<p>DEV y PROD seran tan parecidos como sea posible.</p>
+<p>Por lo tanto se reduce la complejidad y la introducción de nuevos fallos.</p>
+</section>
+</section>
+<section data-transition="fade">
+    <section data-transition="fade">
+    <h3>🛠️ Setup local del sistema</h3>
+<p> Tiempo estimado de <b>Implementación</b>: 2hs</p>
+</section>
+<section data-transition="fade" data-transition="zoom">
+    <p>Se tendra un entorno local de pruebas sobre el código</p>
+</section>
+</section>
+<section data-transition="fade">
+    <section data-transition="fade">
+    <h3>📖 ¿Dockerfile apto para correr en nube?</h3>
+<p> Tiempo estimado de <b>Analisis</b>: 2hs</p>
+</section>
+<section data-transition="fade" data-transition="zoom">
+    <p>Debe haber un correcto manejo de los layers.</p>
+<ul>
+    <li>Utilizar layers de construir rápida en <strong title="">Imagen Docker</strong> , tipo Alpine de base</li>
+<li>Correcto uso de dependencia de paquetes o librerias.</li>
+</ul>
+</section>
+</section>
+<section data-transition="fade">
+    <section data-transition="fade">
+    <h3>📖 ¿Como es la implementación actual de los entornos de desarrollo y producción?</h3>
+<p> Tiempo estimado de <b>Analisis</b>: 2hs</p>
+</section>
+<section data-transition="fade" data-transition="zoom">
+    <p>¿Existen diferencia entre entorno?</p>
+<ul>
+    <li>¿Son diferencia en el despligue?</li>
+<li>¿Son diferencia en las tecnologias?</li>
+<li>¿Son diferencia arquitectonicas?</li>
+</ul>
+</section>
+</section>
+<section data-transition="fade">
+    <h3>🎟️ Entregables</h3>
+</section>
+<section data-transition="fade">
+    <section data-transition="fade">
+    <h3>🏗️ Creación o mejoras de docker-compose.yml para entorno de desarrollo</h3>
+<p> Tiempo estimado de <b>Construcción</b>: 2hs</p>
+</section>
+<section data-transition="fade" data-transition="zoom">
+    <p>Se dara un docker-compose.yml para desarrollo con un minimo de diferencia con producción.</p>
+</section>
+</section>
+<section data-transition="fade">
+    <section data-transition="fade">
+    <h3>🏗️ Creación o mejoras de Dockerfile apto nube multicloud</h3>
+<p> Tiempo estimado de <b>Construcción</b>: 2hs</p>
+</section>
+<section data-transition="fade" data-transition="zoom">
+    <p>
+    <strong>Dockerfile</strong> apto nube y desarrollo con buenas prácticas</p>
+</section>
+</section>
+<section data-transition="fade">
+    <h3>Automatización de Deployment</h3>
+</section>
+<section data-transition="fade">
+    <section data-transition="fade">
+    <h3>🏗️ Scripts de automatización para build de  <strong title="">Imagen Docker</strong>
+</h3>
+<p> Tiempo estimado de <b>Construcción</b>: 2hs</p>
+</section>
+<section data-transition="fade" data-transition="zoom">
+    <p>El script de <strong title="">automatización</strong> permitira reconstrui la <strong title="">Imagen Docker</strong> y enviarla al <strong title="">Registry de Imagenes Docker</strong>   Permitiendo sumarla un <strong title="Flujo de tareas encadenadas con una fin especifico">Pipeline</strong>
+</p>
+</section>
+</section>
+<section data-transition="fade">
+    <section data-transition="fade">
+    <h3>🏗️ Scripts de automatización para instalación de dependencias</h3>
+<p> Tiempo estimado de <b>Construcción</b>: 1hs</p>
+</section>
+<section data-transition="fade" data-transition="zoom">
+    <p>El script permitira</p>
+<ul>
+    <li>Instalar todas la dependencias</li>
+<li>Realizar un cache de las mismas</li>
+<li>Notificar fallos en la instalación de dependencias (DEPRECATE, ERROR DE RED, etc)</li>
+</ul>
+<p> Acelerara el proceso del build de <strong title="">Imagen Docker</strong>
+</p>
+</section>
+</section>
+<section data-transition="fade">
+    <section data-transition="fade">
+    <h3>🏗️ Scripts de automatización para pruebas unitarias según corresponda</h3>
+<p> Tiempo estimado de <b>Construcción</b>: 1hs</p>
+</section>
+<section data-transition="fade" data-transition="zoom">
+    <p>El script permitira</p>
+<ul>
+    <li>Correr pruebas unitarias</li>
+<li>Guardar resultado de la ejecución.</li>
+<li>Notificar errores.</li>
+</ul>
+<p> Garantiza calidad de código.</p>
+</section>
+</section>
+<section data-transition="fade">
+    <section data-transition="fade">
+    <h3> ⚠️ Automatización del Ciclo de Base de Datos</h3>
+<p>
+
+</p>
+</section>
+<section data-transition="fade" data-transition="zoom">
+    <p>Los esquemas de DDBB cambian constantemente. Cambian tipo de columnas o agregan nuevas y se crean nuevas tablas.</p>
+<p> Para evitar ⚠️ <strong>errores crítico</strong> ⚠️ es fundamentar implementar un sistema que:</p>
+<ul>
+    <li>Represente los esquema de tablas como codigo.</li>
+<li>Gestione versionando los cambios de estados.</li>
+<li>Aplique los cambio de manera progresiva.</li>
+<li>Tenga capacidad de actuar ante fallo.</li>
+</ul>
+<p> Mediante una evaluación rápida del sistema se puede determinar cual es la que mejor de adecua.</p>
+</section>
+</section>
+<section data-transition="fade">
+    <section data-transition="fade">
+    <h3>📖 ¿El sistema tiene un DSL para construir los esquema de datos?</h3>
+<p> Tiempo estimado de <b>Analisis</b>: 2hs</p>
+</section>
+<section data-transition="fade" data-transition="zoom">
+    <p>¿Tiene un manejo de los esquema de las tablas de DDBB como código con un DSL?</p>
+<ul>
+    <li>Evaluar:</li>
+<li>Doctrine.</li>
+<li>Liquibase</li>
+<li>Flyway</li>
+<li>¿Permite manejar de manera sencilla los cambios sobre los esquema?</li>
+</ul>
+</section>
+</section>
+<section data-transition="fade">
+    <section data-transition="fade">
+    <h3>📖 ¿El sistema tiene un DSL para migrar automaticamente los cambios esquema de datos?</h3>
+<p> Tiempo estimado de <b>Analisis</b>: 2hs</p>
+</section>
+<section data-transition="fade" data-transition="zoom">
+    <ul>
+    <li>¿ El sistema de gestión de cambios sobre ddbb, de existir, soporta versionado sobre los esquemas?</li>
+<li>¿ Soporta la posiblidad de hacer rollback ?</li>
+</ul>
+</section>
+</section>
+<section data-transition="fade">
+    <section data-transition="fade">
+    <h3>🏗️ Script de setup para una instancia nueva con datos de inicio en DDBB. Creación y Seeding DDBB</h3>
+<p> Tiempo estimado de <b>Construcción</b>: 4hs</p>
+</section>
+<section data-transition="fade" data-transition="zoom">
+    <p>Este script permite tanto para prod y dev:</p>
+<ul>
+    <li>Crear un instancia de base de datos</li>
+<li>Crear las tablas correspondiente para la ultima versión</li>
+<li>Ingresar los datos en la tablas para el funcionamiento del sistema. <strong>Seeding</strong>*</li>
+</ul>
+</section>
+</section>
+<section data-transition="fade">
+    <section data-transition="fade">
+    <h3>🏗️ Script de migración para gestión de cambios en los esquema de bbdd </h3>
+<p> Tiempo estimado de <b>Construcción</b>: 2hs</p>
+</section>
+<section data-transition="fade" data-transition="zoom">
+    <p>Flyway, liquibase o similiar</p>
+</section>
+</section>
+<section data-transition="fade">
+    <section data-transition="fade">
+    <h3>🏗️ Script de backup (esquema y datos segun versión) de bbdd</h3>
+<p> Tiempo estimado de <b>Construcción</b>: 2hs</p>
+</section>
+<section data-transition="fade" data-transition="zoom">
+    <p>Flyway, liquibase o similiar</p>
+</section>
+</section>
+<section data-transition="fade">
+    <section data-transition="fade">
+    <h3>🏗️ Script de restauración por fallo (Esquema y Datos) en migración de bbdd</h3>
+<p> Tiempo estimado de <b>Construcción</b>: 2hs</p>
+</section>
+<section data-transition="fade" data-transition="zoom">
+    <p>Flyway, liquibase o similiar</p>
+</section>
+</section>
+<section data-transition="fade">
+    <section data-transition="fade">
+    <h3>🛠️ Sistema de Gestión de Pipeline, Jenkins o similar</h3>
+<p> Tiempo estimado de <b>Implementación</b>: 4hs</p>
+</section>
+<section data-transition="fade" data-transition="zoom">
+    <p>Se implementara un sistema de gestión que lleve cuentas de todos los pasos implicados en el flujo de tareas automatizadas.</p>
+<ul>
+    <li>Dicho sistema notificara errores en el flujo de trabajo.</li>
+<li>Guardara los resultados del proceso.</li>
+</ul>
+</section>
+</section>
+<section data-transition="fade">
+    <h3>Automatización via Pipeline</h3>
+</section>
+<section data-transition="fade">
+    <section data-transition="fade">
+    <h3>🏗️ Pipeline principal trigger por commit</h3>
+<p> Tiempo estimado de <b>Construcción</b>: 10hs</p>
+</section>
+<section data-transition="fade" data-transition="zoom">
+    <p>Cuando se produzca un nuevo commit en el repo se debe:</p>
+<ul>
+    <li>Hacer Build contenedor</li>
+<li>Instalar dependencias</li>
+<li>Correr test</li>
+<li>Levantar instancia de prueba</li>
+<li>Notificar en caso de Fallo</li>
+</ul>
+</section>
+</section>
+<section data-transition="fade">
+    <section data-transition="fade">
+    <h3>🏗️ Pipeline despliegue de nueva instancia en prod</h3>
+<p> Tiempo estimado de <b>Construcción</b>: 10hs</p>
+</section>
+<section data-transition="fade" data-transition="zoom">
+    <p>Cuando se produzca una accíon de despliegue (manual)</p>
+<ul>
+    <li>Toma versión de imagen docker</li>
+<li>Configura varibles necesarias.</li>
+<li>Despliega infraestructura necesaria</li>
+<li>Guarda copia de artefactos. (Configuración, credenciales. etc)</li>
+</ul>
+</section>
+</section>
+<section data-transition="fade">
+    <section data-transition="fade">
+    <h3>🏗️ Pipeline migración entre versiones nueva instancia en prod</h3>
+<p> Tiempo estimado de <b>Construcción</b>: 10hs</p>
+</section>
+<section data-transition="fade" data-transition="zoom">
+    <p>Cuando se produzca una accíon de migración de version productiva.</p>
+<ul>
+    <li>Toma versión nueva de imagen docker</li>
+<li>Configura varibles necesarias.</li>
+<li>Guarda Backup copia de artefactos. (Configuración, credenciales. etc)</li>
+<li>Despliega infraestructura nueva de ser necesario.</li>
+<li>Realiza migración de esquema de datos.</li>
+<li>Si fallo, hace rollback.</li>
+</ul>
+</section>
+</section>
+<section data-transition="fade">
+    <section data-transition="fade">
+    <h3> Gestión y despliegue de Infraestructura</h3>
+<p>
+
+</p>
+</section>
+<section data-transition="fade" data-transition="zoom">
+    <p>La <strong title="La Infra se describe en un DSL que permite gestionar los cambios de estados">Infraestructura como código</strong> permite llevar un control preciso sobre los cambios de la infraestructura.   Permite reproducir la infraestructura volver a una versión anterior si falla.   Entender porque se realizar un cambio determinado.   Usar variables en el despliegue de infraestructura. Memoria, Disco, etc..</p>
+</section>
+</section>
+<section data-transition="fade">
+    <section data-transition="fade">
+    <h3>🏗️ Script para Infraestructura como código - IaC</h3>
+<p> Tiempo estimado de <b>Construcción</b>: 8hs</p>
+</section>
+<section data-transition="fade" data-transition="zoom">
+    <p>Para automatizar el despligue de nuevas instancia del sistema.</p>
+</section>
+</section>
+<section data-transition="fade">
+    <h3>Gestión de Artefactos</h3>
+</section>
+<section data-transition="fade">
+    <section data-transition="fade">
+    <h3>🛠️ Registry para gestión de  <strong title="">Imagen Docker</strong>
+</h3>
+<p> Tiempo estimado de <b>Implementación</b>: 4hs</p>
+</section>
+<section data-transition="fade" data-transition="zoom">
+    <p>Para poder guardar versiones diferentes de las imagenes de los contenedores</p>
+</section>
+</section>
+<section data-transition="fade">
+    <section data-transition="fade">
+    <h3>🛠️ Repositorio de configuraciones y claves</h3>
+<p> Tiempo estimado de <b>Implementación</b>: 6hs</p>
+</section>
+<section data-transition="fade" data-transition="zoom">
+    <p>Para poder gestionar variables de diferentes versiones de la instancia del producto.   Posibilitara el manejo desde un unico punto de claves de acceso a infraestructura.</p>
+</section>
+</section>
+<section data-transition="fade">
+    <h3>Escalado Elástico automático</h3>
+</section>
+<section data-transition="fade">
+    <section data-transition="fade">
+    <h3>🏗️ Script de infraestructura para escalado automático de instancia a demanda</h3>
+<p> Tiempo estimado de <b>Construcción</b>: 10hs</p>
+</section>
+<section data-transition="fade" data-transition="zoom">
+    <p>Armado de <strong title="La Infra se describe en un DSL que permite gestionar los cambios de estados">Infraestructura como código</strong> para el despliegue de Escalado Elastico en contenedores.</p>
+</section>
+</section>
+<section data-transition="fade">
+    <h3>Control de gastos en infraestructura</h3>
+</section>
+<section data-transition="fade">
+    <section data-transition="fade">
+    <h3>🛠️ Alertas sobre consumo de infraestructura en la nube </h3>
+<p> Tiempo estimado de <b>Implementación</b>: 2hs</p>
+</section>
+<section data-transition="fade" data-transition="zoom">
+
+</section>
+</section>
+<section data-transition="fade">
+    <section data-transition="fade">
+    <h3>📖 Costo minimo por instancia desplegada en la nube </h3>
+<p> Tiempo estimado de <b>Analisis</b>: 2hs</p>
+</section>
+<section data-transition="fade" data-transition="zoom">
+
+</section>
+</section>
+<section data-transition="fade">
+    <h3>Monitoreo de carga de trabajo y Seguridad</h3>
+</section>
+<section data-transition="fade">
+    <section data-transition="fade">
+    <h3>📖 Analisis de posibles fallos de diseño y punto criticos de seguridad. </h3>
+<p> Tiempo estimado de <b>Analisis</b>: 2hs</p>
+</section>
+<section data-transition="fade" data-transition="zoom">
+    <p>Detecto puntos criticos, certificados por vencer, problemas de diseños</p>
+</section>
+</section>
+<section data-transition="fade">
+    <section data-transition="fade">
+    <h3>🛠️ Alertas sobre consumo elevados de CPU, Memoria y disco</h3>
+<p> Tiempo estimado de <b>Implementación</b>: 2hs</p>
+</section>
+<section data-transition="fade" data-transition="zoom">
+    <p> En caso de que se supere el presupuesto definido para infraestructura, se notificara</p>
+</section>
+</section>
+<section data-transition="fade">
+    <h3>Tiempo Estimado de ejecución 117 horas</h3>
+<h3>Costo $ 234000 Pesos </h3>
+</section>
+</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.9.2/js/reveal.js">
+
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.9.2/plugin/markdown/marked.js">
+
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.9.2/plugin/markdown/markdown.js">
+
+</script>
+<script>Reveal.initialize({
+                    markdown: {smartypants: true},
+                    slideNumber: true
+            });</script>
+            </body>
+            </html>
