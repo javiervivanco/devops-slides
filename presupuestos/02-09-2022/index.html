@@ -1,0 +1,115 @@
+<html><head><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.9.2/css/reveal.css"/><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.9.2/css/theme/white.css"/><style>.reveal .slides p{
+    text-align: left;
+}
+</style><title>Presupuesto</title></head><body><div class="reveal"><div class="slides"><section data-transition="fade"><section data-transition="fade"><h3> Presupuesto para la construcción de Contratos OpenAPI con Datos Fake.</h3><p></p></section><section data-transition="fade" data-transition="zoom"><p>Se define el alcance del proyecto, sus etapas y entregables</p></section></section><section data-transition="fade"><h3>Relevamiento de API y EndPoint</h3></section><section data-transition="fade"><section data-transition="fade"><h3>🏗️ Mapa de Arquitectura del sistema en Model C4 </h3><p></p></section><section data-transition="fade" data-transition="zoom"><p>Para tener una visión global del sistema.</p><p> Se definirán:</p><ul><li>Quieres son participantes y cuales son sus roles, ej. usuarios clientes, administradores, etc.</li><li>Cuales son las parte generales del sistema y como interactuan las personas o sistema con los sistemas.</li><li>Los limites de sistema y sus componentes e interacciones internas.</li></ul></section></section><section data-transition="fade"><section data-transition="fade"><h3>📖 Backlog de todos los EndPoint para definir a posterior su respectivo contrato OpenAPI</h3><p></p></section><section data-transition="fade" data-transition="zoom"><p>Se construirá una lista de EndPoint que represente cada una de la entidades del sistema.   Luego de priorizaran la construcción de los contratos con el cliente.</p></section></section><section data-transition="fade"><section data-transition="fade"><h3>🛠️ Sistema de Gestión de Flujo de  Trabajo</h3><p></p></section><section data-transition="fade" data-transition="zoom"><p>Se implementara un sistema gestión de flujo de trabajo.   GitHub cumple con los requisitos.</p><ul><li>Se usara ProjectGH para definir el Backlog</li><li>Issue para cada endpoint y seguimiento.</li><li>Repositorio para guardar los artefactos(Archivos OpenAPI).</li></ul></section></section><section data-transition="fade"><h3>Construcción de Contratos</h3></section><section data-transition="fade"><section data-transition="fade"><h3>🏗️ Contrato de Entidad con Datafake</h3><p> Tiempo estimado de <b>Construcción</b>: 60hs</p></section><section data-transition="fade" data-transition="zoom"><p>Según lo definido en el Backlog y en el Mapa de Arquitectura se construirá un contrato OpenAPI por vez.</p><p> Cada contrato contara con datos falsos para facilitar su implementación por parte un consumir.   Cada contrato generar una URL ficticia que el consumir de API podrá consultar viendo los datos Fake.   Cada contrato tiene un tiempo de construcción de 2hs a 6hs aprox.</p></section></section><section data-transition="fade"><section data-transition="fade"><h3>🏗️ Servidor de Datos Fake json-server </h3><p> Tiempo estimado de <b>Construcción</b>: 10hs</p></section><section data-transition="fade" data-transition="zoom"><p>Cuando se produzca una acción de despliegue o commit</p><ul><li>Toma versión de imagen docker</li><li>Configura varibles necesarias.</li><li>Despliega infraestructura necesaria</li><li>Generar un EndPoint para el nuevo contrato desplegado</li></ul></section></section><section data-transition="fade"><h3>Gestión de Artefactos</h3></section><section data-transition="fade"><section data-transition="fade"><h3>🛠️ Contratos y Arquitectura</h3><p> Tiempo estimado de <b>Implementación</b>: 4hs</p></section><section data-transition="fade" data-transition="zoom"><p>El repo tendra los archivos versionados con cambios.</p></section></section><section data-transition="fade"><section data-transition="fade"><h3>🛠️ Servidor de Datos</h3><p> Tiempo estimado de <b>Implementación</b>: 1hs</p></section><section data-transition="fade" data-transition="zoom"><p>Es necesario un servidor básico en un proveedor de nube. Recomiendo DigitalOcean</p></section></section><section data-transition="fade"><h3>Tiempo Estimado de ejecución 75 horas</h3><h3>Costo u$d 1000 </h3></section></div></div><script src="https://code.jquery.com/jquery-1.8.1.min.js" crossorigin="anonymous"></script><script type="application/javascript">
+function getWorkerURL( url ) {
+  const content = `importScripts( "${ url }" );`;
+  return URL.createObjectURL( new Blob( [ content ], { type: "text/javascript" } ) );
+}
+$(document).ready(function(){
+   plantuml_runonce();
+});
+
+<!--  taken from https://github.com/johan/js-deflate -->
+
+function encode64(data) {
+ r = "";
+ for (i=0; i<data.length; i+=3) {
+  if (i+2==data.length) {
+   r +=append3bytes(data.charCodeAt(i), data.charCodeAt(i+1), 0);
+  } else if (i+1==data.length) {
+   r += append3bytes(data.charCodeAt(i), 0, 0);
+  } else {
+   r += append3bytes(data.charCodeAt(i), data.charCodeAt(i+1), data.charCodeAt(i+2));
+  }
+}
+return r;
+}
+
+function append3bytes(b1, b2, b3) {
+c1 = b1 >> 2;
+c2 = ((b1 & 0x3) << 4) | (b2 >> 4);
+c3 = ((b2 & 0xF) << 2) | (b3 >> 6);
+c4 = b3 & 0x3F;
+r = "";
+r += encode6bit(c1 & 0x3F);
+r += encode6bit(c2 & 0x3F);
+r += encode6bit(c3 & 0x3F);
+r += encode6bit(c4 & 0x3F);
+return r;
+}
+
+function encode6bit(b) {
+if (b < 10) {
+ return String.fromCharCode(48 + b);
+}
+b -= 10;
+if (b < 26) {
+ return String.fromCharCode(65 + b);
+}
+b -= 26;
+if (b < 26) {
+ return String.fromCharCode(97 + b);
+}
+b -= 26;
+if (b == 0) {
+ return '-';
+}
+if (b == 1) {
+ return '_';
+}
+return '?';
+}
+wurl = getWorkerURL("https://cdn.statically.io/gh/rauwebieten/jquery_plantuml/master/rawdeflate.js");
+var deflater = window.SharedWorker && new SharedWorker(wurl);
+if (deflater) {
+  deflater.port.addEventListener('message', done_deflating, false);
+  deflater.port.start();
+} else if (window.Worker) {
+  deflater = new Worker(wurl);
+  deflater.onmessage = done_deflating;
+}
+
+function done_deflating(e) {
+var done = 0;
+$("img").each(function () {
+  if (done==1) return;
+  var u1 = $(this).attr("src");
+  if (u1!=null) return;
+  var u2 = $(this).attr("uml");
+  if (u2=="") return;
+  $(this).attr("src", "http://www.plantuml.com/plantuml/svg/"+encode64(e.data));
+  $(this).attr("uml", "");
+  done = 1;
+});
+plantuml_runonce();
+}
+
+function plantuml_runonce() {
+var done = 0;
+$("img").each(function () {
+  if (done==1) return;
+  var u1 = $(this).attr("src");
+  if (u1!=null) return;
+  var u2 = $(this).attr("uml");
+  if (u2=="") return;
+  var s = unescape(encodeURIComponent(u2));
+  if (deflater) {
+    if (deflater.port && deflater.port.postMessage) {
+      deflater.port.postMessage(s);
+    } else {
+      deflater.postMessage(s);
+    }
+  } else {
+    setTimeout(function() {
+      done_deflating({ data: deflate(s) });
+    }, 100);
+  }
+  done = 1;
+});
+}</script><script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/3.6.0/js/reveal.min.js" integrity="sha512-QYXU3Cojl94ZRiZRjUZpyg1odj9mKTON9MsTMzGNx/L3JqvMA3BQNraZwsZ83UeisO+QMVfFa83SyuYYJzR9hw==" crossorigin=="anonymous" referrerpolicy="no-referrer"></script><script type="module">
+        import Markdown from "https://cdn.jsdelivr.net/npm/reveal.js@4.3.1/plugin/markdown/markdown.esm.js";
+                Reveal.initialize({
+                   plugins: [ Markdown ],
+                   slideNumber: true 
+            });</script></body></html>
